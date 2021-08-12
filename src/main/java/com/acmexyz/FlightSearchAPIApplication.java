@@ -1,5 +1,6 @@
 package com.acmexyz;
 
+import com.acmexyz.health.ServiceHealthCheck;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -23,7 +24,8 @@ public class FlightSearchAPIApplication extends Application<FlightSearchAPIConfi
     @Override
     public void run(final FlightSearchAPIConfiguration configuration,
                     final Environment environment) {
-        // TODO: implement application
+        final ServiceHealthCheck healthCheck = new ServiceHealthCheck();
+        environment.healthChecks().register("service", healthCheck);
     }
 
 }
