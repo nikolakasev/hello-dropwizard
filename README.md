@@ -15,5 +15,6 @@ java -jar target/hello-dropwizard-1.0-SNAPSHOT.jar server config.yml
 ## To think about
 - The API has an admin endpoint listening on 8081 (provided by Dropwizard by default), investigate the potential attack surface
 - How to collect the metrics from http://localhost:8081/metrics, push them to Graphite instead using the graphite reporter instead?
+- It seems that the default log setup uses UTC which is good, but have to check how to configure explicitly (-Duser.timezone=UTC)
 ## Out of scope due to the time constraint
 - No CI/CD pipeline, currently version is hard-coded to 1.0 snapshot
