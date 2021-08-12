@@ -1,6 +1,7 @@
 package com.acmexyz;
 
 import com.acmexyz.health.ServiceHealthCheck;
+import com.acmexyz.resources.HelloWorldResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -18,12 +19,13 @@ public class FlightSearchAPIApplication extends Application<FlightSearchAPIConfi
 
     @Override
     public void initialize(final Bootstrap<FlightSearchAPIConfiguration> bootstrap) {
-        // TODO: application initialization
     }
 
     @Override
     public void run(final FlightSearchAPIConfiguration configuration,
                     final Environment environment) {
+        final HelloWorldResource resource = new HelloWorldResource("John");
+        environment.jersey().register(resource);
         final ServiceHealthCheck healthCheck = new ServiceHealthCheck();
         environment.healthChecks().register("service", healthCheck);
     }
