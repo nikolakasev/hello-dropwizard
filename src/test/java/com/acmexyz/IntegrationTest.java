@@ -1,5 +1,6 @@
 package com.acmexyz;
 
+import com.acmexyz.api.AvailableFlights;
 import com.acmexyz.api.FlightSearchCriteria;
 import io.dropwizard.testing.junit5.DropwizardAppExtension;
 import io.dropwizard.testing.junit5.DropwizardExtensionsSupport;
@@ -10,6 +11,7 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Response;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(DropwizardExtensionsSupport.class)
 public class IntegrationTest {
@@ -31,13 +33,14 @@ public class IntegrationTest {
     @Test
     void searchShouldSucceed() {
         final FlightSearchCriteria criteria = new FlightSearchCriteria("AMS", "VIE");
-        final Response healthCheckResponse =
+        final Response availableFlights =
                 APP.client().target("http://localhost:" + APP.getLocalPort() + "/search")
                         .request()
                         .post(Entity.json(criteria));
 
-        assertThat(healthCheckResponse)
+        assertThat(availableFlights)
                 .extracting(Response::getStatus)
                 .isEqualTo(Response.Status.OK.getStatusCode());
+        assertEquals(1, availableFlights.readEntity(AvailableFlights.class).getFlightsFound().size());
     }
 }
