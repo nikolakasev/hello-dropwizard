@@ -1,4 +1,4 @@
-package com.acmexyz.api;
+package com.acmexyz.core;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

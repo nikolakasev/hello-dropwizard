@@ -1,7 +1,7 @@
 package com.acmexyz;
 
-import com.acmexyz.api.AvailableFlights;
-import com.acmexyz.api.FlightSearchCriteria;
+import com.acmexyz.core.AvailableFlights;
+import com.acmexyz.core.FlightSearchCriteria;
 import io.dropwizard.testing.junit5.DropwizardAppExtension;
 import io.dropwizard.testing.junit5.DropwizardExtensionsSupport;
 import org.junit.jupiter.api.Test;

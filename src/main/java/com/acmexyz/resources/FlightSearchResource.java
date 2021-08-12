@@ -1,8 +1,8 @@
 package com.acmexyz.resources;
 
-import com.acmexyz.api.AvailableFlights;
-import com.acmexyz.api.Flight;
-import com.acmexyz.api.FlightSearchCriteria;
+import com.acmexyz.core.AvailableFlights;
+import com.acmexyz.core.Flight;
+import com.acmexyz.core.FlightSearchCriteria;
 import com.codahale.metrics.annotation.Timed;
 
 import javax.validation.Valid;

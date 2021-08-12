@@ -1,4 +1,4 @@
-package com.acmexyz.api;
+package com.acmexyz.core;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,15 +11,15 @@ public class Flight {
     public final String number;
 
     @Min(value = 1, message = "From must be greater than zero")
-    public final int durationInMinutes;
+    public final Integer durationInMinutes;
 
     @Min(value = 1, message = "From must be greater than zero")
-    public final float costInEuro;
+    public final Integer costInEuro;
 
     @JsonCreator
     public Flight(@JsonProperty("number") String number,
-                  @JsonProperty("durationInMinutes") int durationInMinutes,
-                  @JsonProperty("costInEuro") float costInEuro
+                  @JsonProperty("durationInMinutes") Integer durationInMinutes,
+                  @JsonProperty("costInEuro") Integer costInEuro
     ) {
         this.number = number;
         this.durationInMinutes = durationInMinutes;
