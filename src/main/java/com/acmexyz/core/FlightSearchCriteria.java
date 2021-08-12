@@ -3,29 +3,51 @@ package com.acmexyz.core;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDate;
 
 public class FlightSearchCriteria {
     @NotEmpty
-    private final String from;
+    private final String departureAirport;
 
     @NotEmpty
-    private final String to;
+    private final String destinationAirport;
+
+    @Future
+    private final LocalDate fromDate;
+
+    @Future
+    private final LocalDate toDate;
 
     @JsonCreator
-    public FlightSearchCriteria(@JsonProperty("from") String from,
-                                @JsonProperty("to") String to) {
-        this.from = from;
-        this.to = to;
+    public FlightSearchCriteria(@JsonProperty("departureAirport") String departureAirport,
+                                @JsonProperty("destinationAirport") String destinationAirport,
+                                @JsonProperty("fromDate") LocalDate fromDate,
+                                @JsonProperty("toDate") LocalDate toDate) {
+        this.departureAirport = departureAirport;
+        this.destinationAirport = destinationAirport;
+        this.fromDate = fromDate;
+        this.toDate = toDate;
     }
 
-    @JsonProperty("from")
-    public String getFrom() {
-        return from;
+    @JsonProperty("departureAirport")
+    public String getDepartureAirport() {
+        return departureAirport;
     }
 
-    @JsonProperty("to")
-    public String getTo() {
-        return to;
+    @JsonProperty("destinationAirport")
+    public String getDestinationAirport() {
+        return destinationAirport;
+    }
+
+    @JsonProperty("fromDate")
+    public LocalDate getFromDate() {
+        return fromDate;
+    }
+
+    @JsonProperty("toDate")
+    public LocalDate getToDate() {
+        return toDate;
     }
 }
